@@ -1,0 +1,4 @@
+mark_as_delete: 삭제 대기열에 추가
+unmark_delete: 삭제 대기열에서 삭제
+load_file_to_change_date: 파일을 불러와 날짜 변경
+change_as_new_file: 새 파일로 교체

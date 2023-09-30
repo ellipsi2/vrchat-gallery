@@ -1,0 +1,22 @@
+upload_button: Klik di sini atau jatuhkan file di tempat ini
+notice_limitation1: Ukuran maksimal yang dapat diunggah adalah 10MB per file.
+notice_limitation2: Ekstensi yang dapat diunggah adalah png, jpg, gif dan webp.
+notice_limitation3: 
+    Anda hanya dapat mengunggah foto yang diambil di VRChat.
+    Jika Anda tidak mematuhi ini, gambar akan dihapus tanpa pemberitahuan sebelumnya,
+    dan jika hal ini terus terjadi, hak untuk mengunggah bisa dibatalkan.
+notice_limitation4: Hanya pengguna yang disetujui oleh ellipsi2 yang dapat mengunggah. <strong>Jangan</strong> berbagi akun Anda dengan alasan apa pun.
+upload_notice: Informasi yang dikirim ke server vrc.now.gd adalah sebagai berikut
+upload_notice_element1: Nama setiap file
+upload_notice_element2: 'Zona waktu perangkat saat ini (misalnya: Asia/Seoul)'
+upload_notice_warn:
+    Detail di atas dikirim untuk mendeteksi secara otomatis waktu pengambilan foto.
+    Jika Anda tidak menginginkannya, harap menahan diri dari mengunggah.
+upload_notice_warn2:
+    Nama file dan zona waktu perangkat akan dikirim ke server. Ini akan disimpan dalam UTC+0 oleh server.
+    Nama asli dan zona waktu akan dihapus. Silakan lanjutkan dengan pengunggahan jika Anda setuju.
+upload: Unggah
+uploading: Mengunggah...
+retry_message: Ada file yang gagal diunggah. Apakah Anda ingin mencoba lagi?
+uploading_skip: Dinonaktifkan
+upload_skip: Lanjutkan dengan mengesampingkan file yang gagal.

@@ -1,0 +1,24 @@
+upload_button: ここをクリック、またはここにファイルを落としてください
+notice_limitation1: 最大アップロード可能サイズは、各ファイルあたり10MBです。
+notice_limitation2: アップロードできる拡張子はpng、jpg、gif、そしてwebpです。
+notice_limitation3: 
+    VRチャットで撮った写真だけをアップロードできます。
+    これを遵守しなければ、事前通知なしに画像が削除され、
+    このようなことが発生し続ける場合、アップロードの権限が取り消される可能性があります。
+notice_limitation4:
+    ellipsi2によって承認されたユーザーのみがアップロードできます。
+    いかなる理由であれ、あなたのアカウントを共有<strong>しないでください</strong>。
+upload_notice: vrc.now.gdのサーバーに送信される情報は以下のとおりです
+upload_notice_element1: 各ファイルの名前。
+upload_notice_element2: '現在のデバイスの現地時間帯（例：Asia/Seoul）'
+upload_notice_warn:
+    写真撮影時期を自動的に検出するために、上記の情報が送信されます。
+    これを望まない場合は、アップロードをご遠慮ください。
+upload_notice_warn2:
+    ファイル名とデバイスの時間帯がサーバーに送信されます。 これはサーバーからUTC+0に変換され保存されます。
+    元の名前と時間帯は削除されます。 同意したらアップロードを進めてください。
+upload: アップロード
+uploading: アップロード中…
+retry_message: アップロードに失敗したファイルがあります。再試行しますか？
+uploading_skip:  無効
+upload_skip: 失敗したファイルを除外して進行します。

@@ -1,0 +1,30 @@
+login: Login
+goto_gallerey: Go to my gallery
+warn1: "Caution: This is an alpha testing version of the web application."
+warn2:
+    Please be aware that this version is still under development and may contain bugs or unexpected behavior.
+    Use this version for testing purposes only, and do not rely on it for critical tasks or data.
+    Your feedback is invaluable in helping us improve the app.
+    Thank you for your understanding and cooperation.
+notice1: If you want to upload a photo here, feel freely to request permission from ellipsi2 on VRChat.
+you_have_account?: You've got a account already?
+loading: Loading
+save: Save
+back: Back
+delete_all: Delete all permanently
+tag: Tag
+tags: Tags
+untitled: Untitled
+title: Title
+description: Description
+settings: Settings
+edit: Edit
+copy_direct_link: Copy Direct Link
+disable_zoom: Disable Zoom
+close_user_list: Close user list
+view_detail: View Detail
+go_back_to_my_gallery: Go back to my gallery
+go_back_to_main: Go back to main page
+close: Close
+submit: Submit
+cancel: Cancel

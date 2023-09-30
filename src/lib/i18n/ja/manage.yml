@@ -1,0 +1,4 @@
+mark_as_delete: 削除待ち列に追加
+unmark_delete: 削除待ち列から削除
+load_file_to_change_date: ファイルを読み込んで日付変更
+change_as_new_file: 新しいファイルに交換

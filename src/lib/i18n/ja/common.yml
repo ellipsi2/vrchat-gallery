@@ -1,0 +1,30 @@
+login: ログイン
+goto_gallery: 私のギャラリーに行く
+warn1: 警告：このウェブアプリケーションは現在アルファテスト中です。
+warn2:
+    現在のバージョンはまだ開発中であり、予期せぬ動作やバグが含まれている可能性があります。
+    テストの目的でのみ使用されるべきであり、重要なデータを保存したり信頼性が必要な作業には使用しないでください。
+    皆様のフィードバックはこのアプリに非常に役立つため、たくさんの意見をお願い申し上げます。ご理解いただき、ありがとうございます。
+
+notice1: ここに写真をアップロードしたい場合は、VRChatのellipsi2にご自由にお問い合わせください。
+you_have_account?: アカウントをお持ちですか？
+loading: 呼び掛け中
+save: 保存
+back: 戻る
+delete_all: すべて永久削除
+tag: タグ
+tags: タグ
+untitled: 無題
+title: タイトル
+description: 説明
+settings: 設定
+edit: 編集
+copy_direct_link: 画像URLコピー
+disable_zoom: ズームモード終了
+close_user_list: ユーザーリストを閉じる
+go_back_to_my_gallery: 私のギャラリーに戻る
+go_back_to_main: メインページに戻る
+view_detail: 詳細を表示
+close: 閉じる
+submit: 提出
+cancel: キャンセル

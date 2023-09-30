@@ -1,0 +1,30 @@
+login: Masuk
+goto_gallery: Buka Galeri Saya
+warn1: "Peringatan: Aplikasi web ini sedang dalam tahap uji coba alpha."
+warn2:
+    Saat ini versi ini masih dalam pengembangan dan mungkin mengandung perilaku atau bug yang tidak terduga.
+    Harus digunakan hanya untuk tujuan pengujian, jangan menyimpan data penting atau menggunakan untuk tugas yang membutuhkan keandalan.
+    Kami sangat menghargai umpan balik Anda karena akan sangat membantu aplikasi ini. Terima kasih atas pengertian Anda.
+
+notice1: Jika Anda ingin mengunggah foto di sini, silakan hubungi ellipsi2 dari VRChat untuk informasi lebih lanjut.
+you_have_account?: Apakah Anda memiliki akun?
+loading: Sedang mengambil
+save: Simpan
+back: Kembali
+delete_all: Hapus Semua Secara Permanen
+tag: Tag
+tags: Tag-Tag
+untitled: Tidak Ada Judul
+title: Judul
+description: Deskripsi
+settings: Pengaturan
+edit: Edit
+copy_direct_link: Salin alamat gambar
+disable_zoom: Keluar dari mode perbesaran
+close_user_list: Tutup daftar pengguna
+go_back_to_my_gallery: Kembali ke galeri saya
+go_back_to_main: Kembali ke halaman utama
+view_detail: Lihat detail
+close: Tutup
+submit: Kirimkan
+cancel: Batal

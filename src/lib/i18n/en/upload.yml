@@ -1,0 +1,24 @@
+upload_button: Click or drag and drop images on here
+notice_limitation1: The maximum file size for uploading is 10MB per individual file.
+notice_limitation2: The acceptable image file extensions for upload are png, jpg, gif, and webp.
+notice_limitation3: 
+    You must also upload only the photos captured within VRC.
+    Failure to adhere to this rule will result in the images being deleted without prior notice.
+    If such incidents continue to occur, your upload privileges may be revoked.
+notice_limitation4: Only users authorized by ellipsi2 are allowed to upload. <strong>DO NOT</strong> share your account for any reason.
+upload_notice: The information sent to the vrc.now.gd server is as follows
+upload_notice_element1: The names of each file.
+upload_notice_element2: The local time zone of the your current device. (e.g. Asia/Seoul)
+upload_notice_warn:
+    This is sent in order to automatically detect when the photo was taken.
+    If you do not wish for this information to be disclosed, please refrain from uploading.
+upload_notice_warn2:
+    Your file name and your device's time zone will be sent to the server.
+    This will be converted to UTC+0 on the server and stored.
+    The original name and time zone will be discarded.
+    If you agree, please proceed with the upload.
+upload: Upload
+uploading: Uploading...
+retry_message: There are files that failed to upload. Would you like to retry?
+uploading_skip: Disabled
+upload_skip: Proceed excluding the failed files.

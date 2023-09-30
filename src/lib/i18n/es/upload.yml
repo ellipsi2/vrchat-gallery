@@ -1,0 +1,26 @@
+upload_button: Haz clic aquí o arrastra y suelta archivos aquí
+notice_limitation1: El tamaño máximo de archivo para cargar es de 10 MB por archivo individual.
+notice_limitation2: Las extensiones de archivo de imagen aceptables para la carga son png, jpg, gif y webp.
+notice_limitation3: 
+    También debes cargar solo las fotos capturadas dentro de VRC.
+    No cumplir con esta regla resultará en la eliminación de las imágenes sin previo aviso.
+    Si continúan ocurriendo incidentes de este tipo, tus privilegios de carga podrían ser revocados.
+notice_limitation4:
+    Solo los usuarios autorizados por ellipsi2 pueden cargar contenido.
+    <strong>NO</strong> compartas tu cuenta por ningún motivo.
+upload_notice: La información enviada al servidor vrc.now.gd es la siguiente
+upload_notice_element1: Los nombres de cada archivo.
+upload_notice_element2: 'La zona horaria local de tu dispositivo actual (por ejemplo, Asia/Seoul).'
+upload_notice_warn:
+    Esto se envía para detectar automáticamente cuándo se tomó la foto.
+    Si no deseas que esta información sea revelada, por favor, abstente de subir contenido.
+upload_notice_warn2:
+    El nombre de archivo y la zona horaria de tu dispositivo serán enviados al servidor.
+    Esto se convertirá a UTC+0 en el servidor y se almacenará.
+    El nombre original y la zona horaria serán descartados.
+    Si estás de acuerdo, por favor, procede con la carga.
+upload: Subir
+uploading: Cargando...
+retry_message: Hay archivos que han fallado al subir. ¿Desea intentarlo de nuevo?
+uploading_skip: Desactivado
+upload_skip: Proceda excluyendo los archivos fallidos.

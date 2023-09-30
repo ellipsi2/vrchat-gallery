@@ -1,0 +1,30 @@
+login: Inicio de sesión
+goto_gallery: Ir a mi galería
+warn1: "Advertencia: Esta aplicación web se encuentra actualmente en fase de pruebas alfa."
+warn2: 
+    Por favor, tenga en cuenta que esta versión aún está en desarrollo y puede contener errores o comportamientos inesperados.
+    Utilice esta versión solo para fines de prueba y no confíe en ella para tareas críticas o datos.
+    Sus comentarios son invaluables para ayudarnos a mejorar la aplicación.
+    Gracias por su comprensión y cooperación.
+notice1: Si quieres subir una foto aquí, siéntete libre de solicitar permiso a ellipsi2 en VRChat.
+you_have_account?: ¿Ya tienes una cuenta?
+loading: Cargando
+save: Guardar
+back: Atrás
+delete_all: Eliminar todo permanentemente
+tag: Tag
+tags: Tags
+untitled: Sin título
+title: Título
+description: Descripción
+settings: Configuración
+edit: Editar
+copy_direct_link: Copiar enlace directo
+disable_zoom: Desactivar Zoom
+close_user_list: Cerrar lista de usuarios
+view_detail: Ver detalle
+go_back_to_my_gallery: Volver a mi galería
+go_back_to_main: Volver a la página principal
+close: Cerrar
+submit: Envío
+cancel: Cancelar

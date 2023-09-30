@@ -1,0 +1,26 @@
+upload_button: 在此點擊或拖放圖片
+notice_limitation1: 每個單獨文件的最大上傳大小為10MB。
+notice_limitation2: 可接受的圖片檔案副檔名包括png、jpg、gif和webp。
+notice_limitation3: 
+    您必須僅上傳在VRC內拍攝的照片。
+    如不遵守此規定，圖像將被刪除且不會事先通知。
+    若持續發生此類事件，您的上傳權限可能會被撤銷。
+notice_limitation4:
+    只有由ellipsi2授權的使用者才能上傳。
+    請<strong>絕對不要</strong>出於任何原因分享您的帳戶。
+upload_notice: 發送到vrc.now.gd伺服器的資訊如下
+upload_notice_element1: 每個檔案的名稱。
+upload_notice_element2: 您當前設備的本地時區。 (例如：Asia/Seoul)
+upload_notice_warn:
+    這是為了自動檢測照片拍攝時間而發送的。
+    如果您不希望這些信息被公開，請勿上傳。
+upload_notice_warn2:
+    您的檔案名稱和裝置的時區將會被傳送至伺服器。
+    這些資訊將在伺服器上轉換為UTC+0並儲存。
+    原始名稱和時區將被捨棄。
+    如果您同意，請繼續上傳。
+upload: 上傳
+uploading: 正在上傳...
+retry_message: 有檔案上傳失敗。您想要重新嘗試嗎？
+uploading_skip: 已停用
+upload_skip: 繼續進行，排除失敗的文件。
