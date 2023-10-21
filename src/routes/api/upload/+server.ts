@@ -2,7 +2,7 @@ import { error, json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
 import got from 'got';
 import HttpStatus from 'http-status-codes';
-import {parseInt, range} from 'lodash-es';
+import {last, parseInt, range} from 'lodash-es';
 import { CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_ACCOUNT_HASH, cloudflare } from '$lib/server/secret';
 import { v4 as uuid } from 'uuid';
 import db from '$lib/database/instance';
@@ -95,7 +95,7 @@ export const PUT: RequestHandler = async ({locals, url, request}) => {
     const generatedUniqueIds = (settled
         .filter(v => v.status === 'fulfilled') as PromiseFulfilledResult<Result>[])
         .map((v) =>  v.value.uploadURL)
-        .map(v => v.replace(`https://upload.imagedelivery.net/${CLOUDFLARE_ACCOUNT_HASH}/`, ''));
+        .map(v => last(v.split('/')));
 
     const gid = uuid();
 
@@ -110,6 +110,7 @@ export const PUT: RequestHandler = async ({locals, url, request}) => {
         title: ${title.trim()},
         description: ${description.trim()},
         tags: ${tags.map(tag => tag.trim()).slice(0, 10)},
+        public: false,
     } into images`); // */
 
     return json({

@@ -20,3 +20,4 @@ uploading: Mengunggah...
 retry_message: Ada file yang gagal diunggah. Apakah Anda ingin mencoba lagi?
 uploading_skip: Dinonaktifkan
 upload_skip: Lanjutkan dengan mengesampingkan file yang gagal.
+publish: Terbitkan

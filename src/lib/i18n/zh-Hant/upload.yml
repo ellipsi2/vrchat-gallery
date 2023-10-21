@@ -24,3 +24,4 @@ uploading: 正在上傳...
 retry_message: 有檔案上傳失敗。您想要重新嘗試嗎？
 uploading_skip: 已停用
 upload_skip: 繼續進行，排除失敗的文件。
+publish: 發表

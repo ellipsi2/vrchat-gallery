@@ -22,3 +22,4 @@ uploading: Uploading...
 retry_message: There are files that failed to upload. Would you like to retry?
 uploading_skip: Disabled
 upload_skip: Proceed excluding the failed files.
+publish: Publish

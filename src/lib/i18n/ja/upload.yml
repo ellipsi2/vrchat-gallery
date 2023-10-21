@@ -22,3 +22,4 @@ uploading: アップロード中…
 retry_message: アップロードに失敗したファイルがあります。再試行しますか？
 uploading_skip:  無効
 upload_skip: 失敗したファイルを除外して進行します。
+publish: 公開

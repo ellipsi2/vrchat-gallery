@@ -7,6 +7,40 @@ import { isEmpty } from 'lodash-es';
 import alParser from 'accept-language-parser';
 import dayjs from 'dayjs';
 
+import {listAll} from '$lib/cloudflare/list';
+import db from '$lib/database/instance';
+import { aql } from 'arangojs';
+
+import {writeFileSync} from 'node:fs';
+
+let imageIds: string[] = [];
+
+const validateAllImages = (async ({event, resolve}) => {
+    const a = await listAll();
+    if (a.success) {
+        const {images} = a.result;
+        imageIds = images.map(v => v.id);
+    }
+
+    // writeFileSync('./test.txt', imageIds.join('\n'));
+
+    const cursor = await db.query(aql`
+        let storedImages = FLATTEN(for image in images return image.images)
+        let allSavedImages = ${imageIds}
+        for image in images
+            let invalidImages = (for id in image.images
+                filter id not in allSavedImages
+                    return id)
+            filter LENGTH(invalidImages) > 0
+                return image`);
+    const invalids = await cursor.all();
+
+
+    console.log(invalids.map(v => `${v.owner}/${v.id}`));
+
+    return resolve(event);
+}) satisfies Handle;
+
 const auth = (async ({event, resolve}) => {
     const token = event.cookies.get('token');
 
@@ -70,4 +104,4 @@ const locale = (async ({event, resolve}) => {
     });
 }) satisfies Handle;
 
-export const handle = sequence(auth, locale);
+export const handle = sequence(validateAllImages, auth, locale);

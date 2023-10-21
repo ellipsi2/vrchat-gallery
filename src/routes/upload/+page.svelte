@@ -1,16 +1,19 @@
 <script lang="ts">
 	import { onMount, tick } from 'svelte';
     import type { PageData } from './$types';
-    import { isEmpty, range } from "lodash-es";
+    import { includes, isEmpty, range } from "lodash-es";
     import HttpStatus from 'http-status-codes';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
     import dayjs from 'dayjs';
     import timezone from 'dayjs/plugin/timezone';
-    import MdDeleteForever from 'svelte-icons/md/MdDeleteForever.svelte'
+    import MdDeleteForever from 'svelte-icons/md/MdDeleteForever.svelte';
+    import MdRetry from 'svelte-icons/md/MdRefresh.svelte';
+    import MdSuccess from 'svelte-icons/md/MdCheck.svelte';
 	import { fade } from 'svelte/transition';
 	import { t } from '$lib/i18n';
 	import { namesParser } from '$lib/gallery/image';
+    import asyncPool from 'tiny-async-pool';
 
     export let data: PageData;
 
@@ -27,7 +30,16 @@
     let uploading = false;
 
     let id = '';
+    let uploaded: number[] = [];
+    let incompleted: IImageUploadResult[] = [];
+    let retrying: number[] = [];
 
+
+    interface IImageUploadResult {
+                succeed: boolean;
+                i: number;
+                id: string;
+            }
 
     class Queue<T> {
         private items: T[] = [];
@@ -121,94 +133,103 @@
         uploading = true;
 
         try {
-            let images: string[];
-            // let test = false;
+            const res = await fetch(`/api/upload?count=${files.length}`, {
+                method: 'PUT',
+                body: JSON.stringify({
+                    names: Array.from(files).map((v: File) => v.name),
+                    // @ts-ignore
+                    timezone: (<any>dayjs).tz.guess(),
+                    title,
+                    description,
+                    tags,
+                }),
+            });
 
-            // console.log(isRetry);
-            
-            if (!isRetry) {
-                // console.log('first attempt');
-                const res = await fetch(`/api/upload?count=${files.length}`, {
-                    method: 'PUT',
-                    body: JSON.stringify({
-                        names: Array.from(files).map((v: File) => v.name),
-                        // @ts-ignore
-                        timezone: (<any>dayjs).tz.guess(),
-                        title,
-                        description,
-                        tags,
-                    }),
-                });
+            const result = await res.json() as {images: string[], id: string};
+            let images = result.images;
+            id = result.id;
 
-                const result = await res.json() as {images: string[], id: string};
-                images = result.images;
-                id = result.id;
-            } else {
-                images = retry.map(v => v.imageId);
-                // test = true;
-            }
-            // return;
+            let i = 0;
 
-            const allReady = images.map((imageId, i) => new Promise<void>((res, rej) => {
-                /*
-                if (!test) {
-                    return rej({imageId, i});
-                } */
+            const uploader = (imageId: string, iterable: string[], retryCount: number = 0) => new Promise<IImageUploadResult>(async (resolve) => {
+                try {
+                    const formData = new FormData;
+                    formData.set('file', files[i]);
+                    
+                    const uploadRequest = await fetch(`https://img.now.gd/upload/${imageId}`, {
+                        method: 'POST',
+                        body: formData,
+                    });
 
+                    if (uploadRequest.ok !== true) {
+                        if (retryCount >= 5) {
+                            // return reject({ imageId, i });
+                            console.log('retry count reached to 5. exhausted');
+                            return resolve({
+                                succeed: false,
+                                i,
+                                id: imageId,
+                            });
+                        }
+                        
+                        return await uploader(imageId, iterable, retryCount + 1);
+                    }
 
-                let n = i;
-                if (isRetry) {
-                    n = retry.find(v => v.imageId === imageId)!.i;
+                    resolve({
+                        succeed: true,
+                        i,
+                        id: imageId,
+                    });
+                } finally {
+                    i++;
                 }
 
-                const xhr = new XMLHttpRequest;
-                const formData = new FormData;
-                formData.set('file', files[n]);
+            }) as Promise<IImageUploadResult>;
 
-                xhr.open('POST', `https://img.now.gd/upload/${imageId}`, true);
-
-                xhr.onload = function() {
-                    if (xhr.status != HttpStatus.OK) {
-                        console.error('xhr error');
-                    } else { // show the result
-                        console.log('xhr done');
-                        res();
-                    }
-                };
-
-                xhr.onerror = function() {
-                    console.log('xhr error!')
-                    rej({ imageId, i: n });
-                };
-
-                xhr.send(formData);
-            }));
-
-            // console.log(allReady);
-
-            const p = await Promise.allSettled(allReady);
-
-            const _retry = p.filter(v => v.status === 'rejected')
-                .map(v => (<any>v).reason);
-            console.log(allReady, images, p);
-            if (!isEmpty(_retry)) {
-                retry = _retry;
-                // console.log('retry!');
-            } else {
-                // console.log('done!');
-                goto(`/${data.id}/${id}`).then();
+            for await (const result of asyncPool(4, images, uploader as any) as AsyncIterableIterator<IImageUploadResult>) {
+                // uploaded.push(index);
+                if (result.succeed) {
+                    uploaded = [...uploaded, result.i];
+                } else {
+                    incompleted = [...incompleted, result];
+                }
             }
-            /*
-            
-            if (!isEmpty(_retry)) {
-                retry = _retry;
-            } else {
-            } // */
+
         } finally {
-            if (retry.length <= 0) {
-                uploading = false;
-            }
+            uploading = false;
 
+            if (uploaded.length === fileList.length) {
+                // all uploads are completed.
+                publish();
+            }
+        }
+    }
+
+    function publish() {
+        goto(`${data.id}/${id}`).then();
+    }
+    
+
+    async function uploadRetry(i: number) {
+        retrying = [...retrying, i];
+        try {
+            const target = incompleted.find(v => i === v.i);
+            if (target) {
+                const formData = new FormData;
+                formData.set('file', files[i]);
+            
+                const uploadRequest = await fetch(`https://img.now.gd/upload/${target.id}`, {
+                    method: 'POST',
+                    body: formData,
+                });
+    
+                if (uploadRequest.ok) {
+                    incompleted = incompleted.filter(v => v.i !== i);
+                    uploaded = [...uploaded, i];
+                }
+            }
+        } finally {
+            retrying = retrying.filter(v => v !== i);
         }
     }
 
@@ -219,7 +240,7 @@
 </svelte:head>
 
 {#if !isEmpty(retry)}
-    <div class="fixed bg-gray-500/60 backdrop-blur-md inset-0 flex flex-row items-center">
+    <div class="fixed bg-gray-500/60 backdrop-blur-md inset-0 flex flex-row items-center z-50">
         <div class="flex flex-col items-center w-full">
             <div class="w-1/2 bg-zinc-100 p-4 rounded-md flex flex-col gap-2">
                 <p>{$t('upload.retry_message')}</p>
@@ -258,8 +279,29 @@
 
     <div class:hidden={fileList.length <= 0}>
         <div class="flex flex-col gap-2 pb-4">
-            {#each fileList as src, i}
+            {#each fileList as src, i (src)}
                 <div class="relative rounded-md overflow-hidden ring-1 ring-rose-400">
+                    
+
+                    {#if uploaded.includes(i)}
+                    <div transition:fade class="absolute inset-0 bg-rose-300/25 backdrop-blur-md flex flex-row items-center">
+                        <div class="flex flex-col items-center w-full text-white">
+                            <p><MdSuccess /></p>
+                        </div>
+                    </div>
+                    {:else if incompleted.find(v => v.i === i)}
+                    <div transition:fade class="absolute inset-0 bg-zinc-400/50 backdrop-blur-md flex flex-row items-center">
+                        <div class="flex flex-col items-center w-full">
+                            <p>{$t('upload.failed')}</p>
+                            <div>
+                                <button disabled={retrying.includes(i)} on:click={() => uploadRetry(i)}
+                                        class="bg-rose-400 disabled:bg-zinc-500 text-white rounded-md shadow-md px-4 py-2 w-8 box-content">
+                                    <MdRetry />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    {:else}
                     <div class="absolute top-2 left-2">
                         <p class="px-2 py-1 text-sm w-3/4 text-zinc-700 bg-white/50 ring-1 ring-zinc-200 backdrop-blur-sm rounded-md">{files[i].name}</p>
                     </div>
@@ -271,6 +313,10 @@
                             </span>
                         </button>
                     </div>
+                    {/if}
+
+
+
                     <img class="object-cover w-full h-full" {src} alt="" use:freeImageURL />
                 </div>
             {/each}
@@ -296,6 +342,11 @@
                 </div>
             </div>
             <div class="text-xs text-">{$t('upload.upload_notice_warn2')}</div>
+            {#if !uploading && uploaded.length >= fileList.length}
+            <button on:click={() => publish()} class="px-4 py-2 bg-rose-400 ring-1 ring-rose-300 text-white rounded-md disabled:bg-zinc-600 disabled:ring-zinc-400">
+                {$t('upload.publish')}
+            </button>
+            {:else}
             <button disabled={uploading} on:click={() => upload()} class="px-4 py-2 bg-rose-400 ring-1 ring-rose-300 text-white rounded-md disabled:bg-zinc-600 disabled:ring-zinc-400">
                 {#if uploading}
                     {$t('upload.uploading')}
@@ -303,6 +354,7 @@
                     {$t('upload.upload')}
                 {/if}
             </button>
+            {/if}
         </div>
     </div>
     <div class:hidden={fileList.length > 0}  class="text-xs text-red-500">

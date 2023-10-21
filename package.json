@@ -20,6 +20,7 @@
 		"@types/accept-language-parser": "^1.5.3",
 		"@types/got": "^9.6.12",
 		"@types/lodash-es": "^4.17.8",
+		"@types/tiny-async-pool": "^2.0.1",
 		"@types/uuid": "^9.0.2",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
@@ -58,6 +59,7 @@
 		"svelte-zoom": "^1.0.16",
 		"sveltekit-i18n": "^2.4.2",
 		"swiper": "^10.2.0",
+		"tiny-async-pool": "^2.1.0",
 		"uuid": "^9.0.0"
 	}
 }

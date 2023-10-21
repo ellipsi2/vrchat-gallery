@@ -24,3 +24,4 @@ uploading: Cargando...
 retry_message: Hay archivos que han fallado al subir. ¿Desea intentarlo de nuevo?
 uploading_skip: Desactivado
 upload_skip: Proceda excluyendo los archivos fallidos.
+publish: Publiquen

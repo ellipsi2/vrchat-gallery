@@ -13,6 +13,18 @@ export const load = (async ({params, locals}) => {
     if (!cursor.hasNext) {
         throw error(HttpStatus.NOT_FOUND);
     }
+
     const image = await cursor.next();
+
+    if (!image.public) {
+        if (locals.user.id !== image.owner) {
+            throw error(HttpStatus.NOT_FOUND);
+        } else {
+            await db.query(aql`
+                let img = document(${image._id})
+                update img with {public: true} in images`);
+        }
+    }
+    
     return {...image, isOwner: image.owner === locals?.user?.id};
 }) satisfies PageServerLoad;

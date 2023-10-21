@@ -20,3 +20,4 @@ uploading: 업로드 중...
 retry_message: 업로드에 실패한 파일이 있습니다. 재시도 하시겠습니까?
 uploading_skip: 비활성화 됨
 upload_skip: 실패한 파일 제외하고 진행
+publish: 공개
