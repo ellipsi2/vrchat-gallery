@@ -1,5 +1,4 @@
-import { CLOUDFLARE_ACCOUNT_ID } from '$env/static/private';
-import { cloudflare } from '$lib/server/secret';
+import { cloudflare, CLOUDFLARE_ACCOUNT_ID } from '$lib/server/secret';
 import got from 'got';
 import type { CloudflareRequestResult } from './type';
 
