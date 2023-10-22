@@ -149,56 +149,54 @@
             let images = result.images;
             id = result.id;
 
-            let i = 0;
-
             const uploader = (imageId: string, iterable: string[], retryCount: number = 0) => new Promise<IImageUploadResult>(async (resolve) => {
-                try {
-                    const file = files.at(i);
+                const i = iterable.indexOf(imageId);
+                const file = files.at(i);
+                console.log(i);
 
-                    if (!file) {
+                if (!file) {
+                    return resolve({
+                        succeed: false,
+                        i,
+                        id: imageId,
+                    });
+                }
+
+                // console.log(file);
+    
+                const formData = new FormData();
+                formData.set('file', file);
+                console.log(file);
+                console.log(formData.get('file'));
+
+                //*
+                const uploadRequest = await fetch(`https://img.now.gd/upload/${imageId}`, {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                if (uploadRequest.ok !== true) {
+                    console.log('retry');
+                    if (retryCount >= 5) {
+                        // return reject({ imageId, i });
+                        console.log('retry count reached to 5. exhausted');
                         return resolve({
                             succeed: false,
                             i,
                             id: imageId,
                         });
                     }
+                    
+                    return await uploader(imageId, iterable, retryCount + 1);
+                } // */
 
-                    // console.log(file);
-        
-                    const formData = new FormData;
-                    formData.set('file', file);
+                // console.log(formData.get('file'));
 
-                    //*
-                    const uploadRequest = await fetch(`https://img.now.gd/upload/${imageId}`, {
-                        method: 'POST',
-                        body: formData,
-                    });
-
-                    if (uploadRequest.ok !== true) {
-                        console.log('retry');
-                        if (retryCount >= 5) {
-                            // return reject({ imageId, i });
-                            console.log('retry count reached to 5. exhausted');
-                            return resolve({
-                                succeed: false,
-                                i,
-                                id: imageId,
-                            });
-                        }
-                        
-                        return await uploader(imageId, iterable, retryCount + 1);
-                    } // */
-
-                    // console.log(formData.get('file'));
-
-                    resolve({
-                        succeed: true,
-                        i,
-                        id: imageId,
-                    });
-                } finally {
-                    i++;
-                }
+                resolve({
+                    succeed: true,
+                    i,
+                    id: imageId,
+                });
 
             }) as Promise<IImageUploadResult>;
 
