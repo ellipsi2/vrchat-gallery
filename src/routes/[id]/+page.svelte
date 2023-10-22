@@ -19,7 +19,7 @@
     // @ts-ignore
     declare var allImages: typeof data.images;
     $: allImages = [...data.images];
-    let counts = data.counts;
+    $: counts = data.counts;
 
     onMount(async () => {
         loaded = true;
