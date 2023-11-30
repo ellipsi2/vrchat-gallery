@@ -8,7 +8,7 @@ notice_limitation3:
 notice_limitation4:
     ellipsi2によって承認されたユーザーのみがアップロードできます。
     いかなる理由であれ、あなたのアカウントを共有<strong>しないでください</strong>。
-upload_notice: vrc.now.gdのサーバーに送信される情報は以下のとおりです
+upload_notice: vrc.vgのサーバーに送信される情報は以下のとおりです
 upload_notice_element1: 各ファイルの名前。
 upload_notice_element2: '現在のデバイスの現地時間帯（例：Asia/Seoul）'
 upload_notice_warn:

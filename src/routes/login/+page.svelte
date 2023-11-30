@@ -36,7 +36,7 @@
 </script>
 
 <svelte:head>
-    <title>Login - vrc.now.gd</title>
+    <title>Login - vrc.vg</title>
 </svelte:head>
 
 <div class="h-dyn-screen flex flex-row items-center">

@@ -6,7 +6,7 @@ notice_limitation3:
     不遵守这条规则将导致图像被删除，且不会提前通知。
     如果此类事件持续发生，你的上传权限可能会被撤销。
 notice_limitation4: 只有ellipsi2授权的用户才能进行上传。请<strong>不要</strong>因任何原因分享您的账户。
-upload_notice: 发送到vrc.now.gd服务器的信息如下
+upload_notice: 发送到vrc.vg服务器的信息如下
 upload_notice_element1: 每个文件的名称。
 upload_notice_element2: 当前设备所在地区域时间。（例如：Asia/Seoul）
 upload_notice_warn:

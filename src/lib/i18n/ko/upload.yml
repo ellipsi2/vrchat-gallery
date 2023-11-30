@@ -6,7 +6,7 @@ notice_limitation3:
     이를 준수하지 않으면 사전 통지 없이 이미지가 삭제되며,
     이러한 일이 계속 발생할 경우 업로드 권한이 취소 될 수 있습니다.
 notice_limitation4: ellipsi2에 의해 승인된 사용자만이 업로드 할 수 있습니다. 어떤 이유로든 여러분의 계정을 공유<strong>하지 마세요</strong>.
-upload_notice: vrc.now.gd 서버로 전송되는 정보는 다음과 같습니다
+upload_notice: vrc.vg 서버로 전송되는 정보는 다음과 같습니다
 upload_notice_element1: 각 파일의 이름
 upload_notice_element2: '현재 장치의 현지 시간대 (예: Asia/Seoul)'
 upload_notice_warn:

@@ -170,7 +170,7 @@
                 console.log(formData.get('file'));
 
                 //*
-                const uploadRequest = await fetch(`https://img.now.gd/upload/${imageId}`, {
+                const uploadRequest = await fetch(`https://img.vrc.vg/upload/${imageId}`, {
                     method: 'POST',
                     body: formData,
                 });
@@ -232,7 +232,7 @@
                 const formData = new FormData;
                 formData.set('file', files[i]);
             
-                const uploadRequest = await fetch(`https://img.now.gd/upload/${target.id}`, {
+                const uploadRequest = await fetch(`https://img.vrc.vg/upload/${target.id}`, {
                     method: 'POST',
                     body: formData,
                 });
@@ -250,7 +250,7 @@
 </script>
 
 <svelte:head>
-    <title>Upload as {data.id} - vrc.now.gd</title>
+    <title>Upload as {data.id} - vrc.vg</title>
 </svelte:head>
 
 {#if !isEmpty(retry)}

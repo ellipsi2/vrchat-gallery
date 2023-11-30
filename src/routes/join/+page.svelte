@@ -44,7 +44,7 @@
 </script>
 
 <svelte:head>
-    <title>Join - vrc.now.gd</title>
+    <title>Join - vrc.vg</title>
 </svelte:head>
 
 <div class="h-dyn-screen flex flex-row items-center">

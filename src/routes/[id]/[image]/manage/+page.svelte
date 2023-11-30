@@ -22,7 +22,7 @@
     onMount(async () => {
         let i = 0;
         for (const image of data.parent.images) {
-            const res = await fetch(`https://img.now.gd/${image}/xs`);
+            const res = await fetch(`https://img.vrc.vg/${image}/xs`);
             if (res.status === 404) {
                 failures = [...failures, i];
             }
@@ -95,7 +95,7 @@
 
 <svelte:head>
     <title>
-        {$page.params.id} - vrc.now.gd
+        {$page.params.id} - vrc.vg
     </title>
 </svelte:head>
 
@@ -134,7 +134,7 @@
                             <div class="relative rounded-md ring-1 ring-zinc-300 overflow-hidden w-56 h-56">
                                 <img class:grayscale={markedForDelete.includes(image)}
                                      class="filter transition-all"
-                                     src="https://img.now.gd/{image}/xs" alt="" />
+                                     src="https://img.vrc.vg/{image}/xs" alt="" />
     
                                 {#if failures.includes(i)}
                                     <div class="absolute inset-0">

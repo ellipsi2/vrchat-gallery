@@ -48,7 +48,7 @@
 
 <svelte:head>
     <title>
-        {$t('common.settings')} - vrc.now.gd
+        {$t('common.settings')} - vrc.vg
     </title>
 </svelte:head>
 

@@ -26,7 +26,7 @@ export async function login(id: string, password: string): Promise<string> {
     }
 
     const jwt = njwt.create({
-        iss: 'https://vrc.now.gd',
+        iss: 'https://vrc.vg',
         sub: 'vrc',
         scope: 'login',
         id,

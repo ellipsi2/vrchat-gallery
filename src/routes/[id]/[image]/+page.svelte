@@ -50,7 +50,7 @@
     }
 
     function copyImageDirectUrl() {
-        window.navigator.clipboard.writeText(`https://img.now.gd/${data.images[swiper.activeIndex]}/public`);
+        window.navigator.clipboard.writeText(`https://img.vrc.vg/${data.images[swiper.activeIndex]}/public`);
     }
 
     onMount(() => {
@@ -70,7 +70,7 @@
             current = swiper.activeIndex + 1;
             const img: HTMLImageElement | null = document.body.querySelector(`#img-${current}`);
             if (img instanceof HTMLImageElement && !loaded[current]) {
-                img.src = `https://img.now.gd/${data.images[swiper.activeIndex]}/public`;
+                img.src = `https://img.vrc.vg/${data.images[swiper.activeIndex]}/public`;
                 loaded[current] = true;
             }
         });
@@ -78,7 +78,7 @@
         const firstImage = document.body.querySelector('#img-1');
 
         if (firstImage instanceof HTMLImageElement) {
-            firstImage.src = `https://img.now.gd/${data.images[0]}/public`;
+            firstImage.src = `https://img.vrc.vg/${data.images[0]}/public`;
             loaded[0] = true;
         }
 
@@ -92,7 +92,7 @@
 </script>
 
 <svelte:head>
-    <title>Image detail - vrc.now.gd</title>
+    <title>Image detail - vrc.vg</title>
 </svelte:head>
 
 <div class="h-dyn-screen bg-black relative overflow-y-hidden">
@@ -141,7 +141,7 @@
 
     {#if viewHD}
     <div class="absolute top-16 inset-0 z-10 bg-black">
-        <Zoom src="https://img.now.gd/{data.images[swiper.activeIndex]}/hd" alt="" />
+        <Zoom src="https://img.vrc.vg/{data.images[swiper.activeIndex]}/hd" alt="" />
     </div>
     {/if}
 
