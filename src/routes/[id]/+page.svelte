@@ -195,7 +195,7 @@
                     <img
                         loading="lazy"
                         class="rounded-md h-auto aspect-square"
-                        src="https://img.now.gd/{image.preview}/thumb"
+                        src="https://img.vrc.vg/{image.preview}/thumb"
                         alt=""
                     />
                     <div class="px-4 py-2 text-left">
